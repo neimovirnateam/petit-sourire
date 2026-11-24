@@ -899,6 +899,11 @@
   .tool-mirror{fill:rgba(255,255,255,.16);stroke:#fff;stroke-width:2.6}
   .tool-glint{fill:#fff;opacity:.9}
   .tap-ring{fill:none;stroke:#fff;stroke-width:1.6;opacity:0;transform-box:fill-box;transform-origin:center;animation:psRing 4.6s ease-out infinite}
+.brush-tool{transform-box:view-box;transform-origin:27px 69px;animation:psBrush 4.6s ease-in-out infinite}
+.brush-handle{stroke:#fff;stroke-width:3.1;stroke-linecap:round;fill:none}
+.brush-head{fill:rgba(255,255,255,.16);stroke:#fff;stroke-width:2.4}
+.brush-bristle{stroke:#fff;stroke-width:1.7;stroke-linecap:round;fill:none}
+@keyframes psBrush{0%,46%{transform:translate(0,0) rotate(0deg)}56%{transform:translate(2.4px,-3px) rotate(2.2deg)}66%{transform:translate(0,0) rotate(0deg)}76%{transform:translate(2.4px,-3px) rotate(2.2deg)}86%,100%{transform:translate(0,0) rotate(0deg)}}
   .tooth-path{transform-box:view-box;transform-origin:50px 50px;animation:psJiggle 4.6s ease-in-out infinite;fill:none;stroke:#fff;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
   @keyframes psTap{
     0%,8%{transform:translate(0,0) rotate(0deg)}
@@ -925,7 +930,7 @@
     35%,100%{transform:rotate(0deg)}
   }
   @media (prefers-reduced-motion: reduce){
-    .tap-tool,.tap-ring,.tooth-path{animation:none}
+    .tap-tool,.tap-ring,.tooth-path,.brush-tool{animation:none}
   }
   /* ===== Mobile header: slogan under the logo, like desktop ===== */
   @media (max-width:760px){
@@ -1091,7 +1096,7 @@
             <span class="team-rule rv" style="--d:60ms" aria-hidden="true"></span>
             <h2 class="lines"><span class="ln"><span style="--i:0">A Team of</span></span><span class="ln"><span style="--i:1"><span class="off">Caring Dentists</span></span></span></h2>
             <p class="rv" style="--d:150ms">We love our job. And love our little patients. Everything we do comes from care.</p>
-            <svg class="team-tooth rv" style="--d:250ms" viewBox="0 0 100 100" aria-hidden="true"><g transform="rotate(-13 50 50)"><path class="tooth-path" d="M50 6C42.5 6 35 8 28.5 8.5C15.5 9.5 7.5 18.5 7.5 30c0 7.5 2.5 13.5 4.8 20.3 2.5 7.5 3.9 15.6 5 23.8.8 6.2 2.6 14.4 8.6 14.4 6.2 0 6.4-10.2 9.2-17.4 1.9-4.9 6.7-8.1 14.9-8.1s13 3.2 14.9 8.1c2.8 7.2 3 17.4 9.2 17.4 6 0 7.8-8.2 8.6-14.4 1.1-8.2 2.5-16.3 5-23.8C90 43.5 92.5 37.5 92.5 30c0-11.5-8-20.5-21-21.5C64.5 8 57.5 6 50 6z"/></g><circle class="tap-ring" cx="82" cy="22" r="4"/><g class="tap-tool"><path class="tool-handle" d="M101 12.5 L124 3"/><circle class="tool-mirror" cx="93" cy="14" r="9.2"/><circle class="tool-glint" cx="89.5" cy="10.5" r="2.8"/></g></svg>
+            <svg class="team-tooth rv" style="--d:250ms" viewBox="0 0 100 100" aria-hidden="true"><g transform="rotate(-13 50 50)"><path class="tooth-path" d="M50 6C42.5 6 35 8 28.5 8.5C15.5 9.5 7.5 18.5 7.5 30c0 7.5 2.5 13.5 4.8 20.3 2.5 7.5 3.9 15.6 5 23.8.8 6.2 2.6 14.4 8.6 14.4 6.2 0 6.4-10.2 9.2-17.4 1.9-4.9 6.7-8.1 14.9-8.1s13 3.2 14.9 8.1c2.8 7.2 3 17.4 9.2 17.4 6 0 7.8-8.2 8.6-14.4 1.1-8.2 2.5-16.3 5-23.8C90 43.5 92.5 37.5 92.5 30c0-11.5-8-20.5-21-21.5C64.5 8 57.5 6 50 6z"/></g><circle class="tap-ring" cx="82" cy="22" r="4"/><g class="tap-tool"><path class="tool-handle" d="M101 12.5 L124 3"/><circle class="tool-mirror" cx="93" cy="14" r="9.2"/><circle class="tool-glint" cx="89.5" cy="10.5" r="2.8"/></g><g class="brush-tool"><path class="brush-handle" d="M-19 100.5 L12.5 79.5"/><rect class="brush-head" x="11.8" y="72.2" width="16" height="6.2" rx="3.1" transform="rotate(-33.7 19.8 75.3)"/><path class="brush-bristle" d="M22.5 69.8 L24.5 65.9 M25.5 71.6 L27.5 67.7 M28 73.6 L30 69.7"/></g></svg>
           </div>
           <div class="team-side rv" style="--d:200ms">
             <div class="team-show" id="teamShow">
