@@ -861,6 +861,15 @@
     .imgwrap.pre img,.imgwrap.pre.in img{transform:none}
     .btn:hover{transform:none}
   }
+
+  /* ===== Motion layer v2 — scroll-linked life inside the frames ===== */
+  /* The photos sit a touch larger than their frames; the script drifts
+     them a few pixels against the scroll (separate `translate` property,
+     so it never fights the reveal or hover transforms). */
+  .svc-img img,.owner-photo img{scale:1.13}
+  @media (prefers-reduced-motion: reduce){
+    .svc-img img,.owner-photo img{scale:1}
+  }
 </style>
 </head>
 <body>
@@ -1292,7 +1301,7 @@
           io.unobserve(e.target);
         }
       });
-    }, {threshold: 0.1, rootMargin: '0px 0px 18% 0px'});
+    }, {threshold: 0.1, rootMargin: '0px 0px -6% 0px'});
     items.forEach(function(el){
       el.classList.add('pre');
       io.observe(el);
@@ -1301,10 +1310,16 @@
       el.classList.add('pre');
       io.observe(el);
     });
-    setTimeout(function(){
-      items.forEach(function(el){ el.classList.add('in'); });
-      covers.forEach(function(el){ el.classList.add('in'); });
-    }, 2500);
+    /* Safety sweep: reveal anything already in view that the observer
+       somehow missed — but never an off-screen section. Revealing the
+       whole page up front would spend every animation before the
+       visitor scrolls to it, and the page would read as flat. */
+    setInterval(function(){
+      document.querySelectorAll('.pre:not(.in)').forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+      });
+    }, 3000);
   }
 
   /* Team slideshow: the four portraits rotate on their own — the
@@ -1417,6 +1432,31 @@
     window.addEventListener('resize', onScroll);
     update();
   }
+})();
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.svc-img img, .owner-photo img'));
+  if (!imgs.length) return;
+  var ticking = false;
+  function update(){
+    ticking = false;
+    var vh = window.innerHeight;
+    imgs.forEach(function(img){
+      var r = img.getBoundingClientRect();
+      if (r.bottom < -40 || r.top > vh + 40) return;
+      var p = (r.top + r.height / 2 - vh / 2) / vh; /* about -0.7..0.7 in view */
+      var y = Math.max(-1, Math.min(1, p)) * -13;
+      img.style.translate = '0 ' + y.toFixed(1) + 'px';
+    });
+  }
+  function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
 })();
 </script>
 </body>
