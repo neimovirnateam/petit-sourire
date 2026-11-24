@@ -875,6 +875,16 @@
   .rv{transition-duration:.95s}
   .rv.pre{transform:translateY(38px)}
   .imgwrap.pre img{transform:scale(1.1)}
+
+  /* ===== Owner portrait — frameless cut-out, no background, no shadow ===== */
+  .owner-photo.imgwrap{overflow:visible;border:none;background:transparent;box-shadow:none}
+  .owner-photo.imgwrap::after{display:none}
+  .owner-photo.imgwrap.pre img{opacity:1;transform:none}
+  .owner-photo.imgwrap.pre.in img{opacity:1;transform:none;transition:none}
+  .owner-photo img{
+    -webkit-mask-image:radial-gradient(ellipse 74% 68% at 50% 40%, #000 56%, transparent 76%);
+    mask-image:radial-gradient(ellipse 74% 68% at 50% 40%, #000 56%, transparent 76%);
+  }
 </style>
 </head>
 <body>
