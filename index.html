@@ -997,6 +997,15 @@
   @media (min-width:761px){
     #dentist{padding-top:calc(var(--space-section)/4)}
   }
+
+  /* Welcome heading: flanking divider lines removed, heading stays centred (25.11). */
+  #dentist h2.h-flanked{justify-content:center}
+  #dentist h2.h-flanked::before,#dentist h2.h-flanked::after{display:none}
+
+  /* Welcome section: double the space above and below it, desktop only (25.11). */
+  @media (min-width:761px){
+    #dentist{padding-top:calc(var(--space-section)/2);padding-bottom:var(--space-section)}
+  }
 </style>
 </head>
 <body>
