@@ -940,13 +940,9 @@
     .wordmark small{display:block}
   }
 
-/* Neon lift for headlines — the book panel's lime, stepped for readability */
-@supports ((-webkit-background-clip:text) or (background-clip:text)){
-  .hero-panel h1, h2.lines:not(.statement h2){
-    background-image:linear-gradient(98deg, #5A8F00 0%, #558000 32%, #77a800 62%, #7ED321 100%);
-    -webkit-background-clip:text; background-clip:text;
-    -webkit-text-fill-color:transparent; color:transparent;
-  }
+/* Headlines: solid deep green — the gradient-text fill did not paint in mobile Safari/WebKit (blank headlines), so keep it solid for reliability. */
+.hero-panel h1, h2.lines:not(.statement h2){
+  color:#33691E;
 }
 .owner-card .owner-words blockquote{font-family:var(--font-body);font-weight:600;letter-spacing:-.005em}
 @media (min-width:761px){
