@@ -976,6 +976,22 @@
 @media (max-width:760px){
   #dentist .owner-photo{width:72%}
 }
+
+  /* ---------- Iryna's fixes 25.11 (round 30) ---------- */
+  /* Stats under the hero: more air above and below (desktop). */
+  .facts-grid{padding:56px 0 calc(var(--space-section)*.75)}
+  /* On mobile only the bottom grows; the top stays as it was. */
+  @media (max-width:1020px){
+    .facts-grid{padding-top:28px;padding-bottom:calc(var(--space-section)*.75)}
+  }
+  /* Equipment video: no salad-green cover while it loads. */
+  .equip-media::after{display:none !important}
+  .equip-media.imgwrap.pre video{opacity:1}
+  /* FAQ questions in the headline green. */
+  .faq-list summary{color:#33691E}
+  /* Header Book button (scrolled state): border and text in the headline green. */
+  header.scrolled nav.main a.btn{border-color:#33691E;color:#33691E}
+  header.scrolled nav.main a.btn:hover{color:#33691E;background:rgba(51,105,30,.07)}
 </style>
 </head>
 <body>
@@ -1236,7 +1252,7 @@
       <div class="faq-grid">
         <div class="faq-side">
           <h2 class="lines h-flanked"><span class="ln"><span style="--i:0">FAQ</span></span></h2>
-          <p class="rv" style="--d:120ms">For other questions, call the clinic during opening hours.</p>
+          <p class="rv" style="--d:120ms">For other questions, call the clinic during <span style="white-space:nowrap">opening hours.</span></p>
         </div>
         <div class="faq-list rv" style="--d:150ms">
           <details>
