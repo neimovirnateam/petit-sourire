@@ -992,6 +992,11 @@
   /* Header Book button (scrolled state): border and text in the headline green. */
   header.scrolled nav.main a.btn{border-color:#33691E;color:#33691E}
   header.scrolled nav.main a.btn:hover{color:#33691E;background:rgba(51,105,30,.07)}
+
+  /* Welcome heading: double the space above it, desktop only (25.11). */
+  @media (min-width:761px){
+    #dentist{padding-top:calc(var(--space-section)/4)}
+  }
 </style>
 </head>
 <body>
